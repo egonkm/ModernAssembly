@@ -35,13 +35,17 @@ This is not a complete instruction set, but it gives a general idea of what an a
 ADD:
 
 r0 = r1 + r2
+
 r0 = r1 + Imm // Immediate value
 
 ADC:
 
 r0 = r1 + r2 + Carry // or C for brevity
+
 r0 = r1 +c r2 // shorter version
+
 r0 = r1 + Imm + c 
+
 r0 = r1 +c Imm
 
 * Don't set the flags:
@@ -69,18 +73,23 @@ r[32..63] = Imm16
 MOVZ:
 
 r = Imm16 left shift N
+
 r = Imm16 << N
 
 STR:
 
 Mem[r1+r2] = r3
+
 mem[r1+Imm] = r2
+
 r1 -> mem[r2+r3] 
+
 r1 -> m[r2+Imm]
 
 STRH:
 
 M[r1+r2] = low(r3)
+
 m[r1+Imm] = r2[15..0]
 
 STRB:
@@ -90,7 +99,9 @@ m[r1+r2] = byte(r3) | r3[7..0]
 LDR:
 
 r0 = m[r1+r2]
+
 r0 <- mem[r1+r2]
+
 m[r1+r2] -> r0
 
 B , BAL:
@@ -100,19 +111,25 @@ goto label
 Bcondition:
 
 if condition goto label
+
 goto label if condition
 
 Examples:
 
 goto end if eq
+
 if ne goto loop
 
 ORR, AND, EOR, BIC, ORN, EON
 
 r1 = r2 or r3
+
 r1 = r2 and r3
+
 r1 = r2 eor r3
+
 r1 = r2 and not r3
+
 r1 = r2 or not r3
 
 MVN
@@ -122,14 +139,19 @@ r1 = not r2
 LSR, LSL, ASR, ROR:
 
 r1 = r2 lsr r3 
+
 r1 = r2 lsl r3
+
 r1 = r2 asr r3
+
 r1 = r2 ror r3
 
 ADR:
 
 r1 = label
+
 r1 = addr(label)
+
 r1 = .
 
 ADRP:
@@ -145,6 +167,7 @@ m[r1=r1+Imm] = r0
 Instead of STR r0, [r1], Imm:
 
 m[r1] = r0, r1 += Imm
+
 m[r1++Imm] = r0
 
 ## Conditional instructions:
@@ -155,6 +178,7 @@ if condition instruction
 Examples:
 
 r0 = r0 + r1 if eq
+
 if eq r0 = r0 + r1
 
 ## Bit extraction
@@ -176,13 +200,17 @@ r1 = r2 and (r2 lsl Imm)
 ## CSEL, CINC, CSINC
 
 r1 = r2 if cond else r3
+
 r1 = if cond r2 else r3
 
 if cond r1 = r1+1
+
 r1 += 1 if cond
 
 r1 = r2 if cond else r3+1
+
 r1 = if cond r2 else r3+1
+
 if cond r1=r2 else r1=r3+1
 
 
