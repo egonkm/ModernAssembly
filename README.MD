@@ -51,6 +51,7 @@ r0 = r1 +c r2 (no flags)
 MOV:
 
 r1 = r2
+
 r1 = Imm
 
 NEG:
@@ -60,7 +61,9 @@ r1 = -r2
 MOVK:
 
 r[0..15] = Imm16
+
 r[16..31] = Imm16
+
 r[32..63] = Imm16
 
 MOVZ:
